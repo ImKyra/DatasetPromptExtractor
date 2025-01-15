@@ -8,22 +8,31 @@ from DatasetExtractor import DatasetExtractor
 
 class MainWindow(QMainWindow):
     def create_horizontal_layout(self, label_text, button_callback):
+
         label = QLabel(f"{label_text}:")
+
         textbox = QTextEdit()
         textbox.setFixedHeight(30)
+
         button = QPushButton("...")
         button.clicked.connect(button_callback)
+
         layout = QHBoxLayout()
         layout.addWidget(label)
         layout.addWidget(textbox)
         layout.addWidget(button)
+
         if label_text == "Dataset Folder":
             self.folder_textbox = textbox
         elif label_text == "LORA File":
             self.file_textbox = textbox
         return layout
+
     def __init__(self):
         super().__init__()
+
+        self.file_textbox = None
+        self.folder_textbox = None
 
         self.setWindowTitle("Dataset Prompt Extractor")
         self.setGeometry(100, 100, 800, 600)  # Main window dimensions
@@ -51,13 +60,14 @@ class MainWindow(QMainWindow):
 
         # Buttons
         self.process_button = QPushButton("Process")
-        self.clipboard_button = QPushButton("Copy to Clipboard (CC)")
-        self.clipboard_button.setStyleSheet("background-color: orange; color: white;")
-        self.clipboard_button.clicked.connect(self.copy_to_clipboard)
         self.process_button.setStyleSheet("background-color: green; color: white;")
         self.process_button.clicked.connect(self.process_data)
 
-        self.save_button = QPushButton("Save Output")
+        self.clipboard_button = QPushButton("To Clipboard")
+        self.clipboard_button.setStyleSheet("background-color: orange; color: white;")
+        self.clipboard_button.clicked.connect(self.copy_to_clipboard)
+
+        self.save_button = QPushButton("To file")
         self.save_button.setStyleSheet("background-color: blue; color: white;")
         self.save_button.clicked.connect(self.save_output)
 
