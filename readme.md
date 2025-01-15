@@ -1,6 +1,8 @@
 # Dataset Prompt Extractor
 Dataset Prompt Extractor is a PyQt5-based GUI application designed to extract prompts from files inside a dataset folder. The tool will normalize the text and add `<lora:{chosen-lora}:1>` tag to allow a fast testing of your dataset using sd-webui-forge "Prompts from file or textbox" script.
 
+![Dataset Prompt Extractor](https://i.imgur.com/Vx5xkBY.png)
+
 ## Manual installation & Setup
 ### 1. Clone the Repository
 ``` bash
